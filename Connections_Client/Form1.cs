@@ -68,12 +68,25 @@ namespace Connections_Client
                 incorrect_input = true;
             }
 
+            /*if (!service.CityExists(startCity)) //ok, nie działa
+            {
+                MessageBox.Show("Starting city [" + startCity + "] doesn't exists", "Incorrect Input");
+                incorrect_input = true;
+            }
+            
+            if (!service.CityExists(endCity))
+            {
+                MessageBox.Show("Ending city [" + endCity + "] doesn't exists", "Incorrect Input");
+                incorrect_input = true;
+            }*/
+
             //show after validating everything
             if (!incorrect_input)
             {
                 string output = service.GetData(startCity, endCity, departure, arrival);
 
-                Output.Text = output;
+                Output.Text = output; //zmienimy text na coś innego
+
             }
 
             

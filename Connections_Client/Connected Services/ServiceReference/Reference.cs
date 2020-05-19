@@ -95,6 +95,12 @@ namespace Connections_Client.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService/GetDataUsingDataContractResponse")]
         System.Threading.Tasks.Task<Connections_Client.ServiceReference.CompositeType> GetDataUsingDataContractAsync(Connections_Client.ServiceReference.CompositeType composite);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CityExists", ReplyAction="http://tempuri.org/IService/CityExistsResponse")]
+        bool CityExists(string city);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CityExists", ReplyAction="http://tempuri.org/IService/CityExistsResponse")]
+        System.Threading.Tasks.Task<bool> CityExistsAsync(string city);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -146,6 +152,14 @@ namespace Connections_Client.ServiceReference {
         
         public System.Threading.Tasks.Task<Connections_Client.ServiceReference.CompositeType> GetDataUsingDataContractAsync(Connections_Client.ServiceReference.CompositeType composite) {
             return base.Channel.GetDataUsingDataContractAsync(composite);
+        }
+        
+        public bool CityExists(string city) {
+            return base.Channel.CityExists(city);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CityExistsAsync(string city) {
+            return base.Channel.CityExistsAsync(city);
         }
     }
 }

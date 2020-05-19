@@ -23,6 +23,10 @@ namespace WcfService
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         // TODO: dodaj tutaj operacje usługi
+
+        [OperationContract]
+        bool CityExists(string city);
+
     }
 
 
