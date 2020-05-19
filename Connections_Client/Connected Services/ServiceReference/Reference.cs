@@ -79,10 +79,10 @@ namespace Connections_Client.ServiceReference {
     public interface IService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetData", ReplyAction="http://tempuri.org/IService/GetDataResponse")]
-        string GetData(string startCity, string endCity);
+        string GetData(string startCity, string endCity, System.DateTime departure, System.DateTime arrival);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetData", ReplyAction="http://tempuri.org/IService/GetDataResponse")]
-        System.Threading.Tasks.Task<string> GetDataAsync(string startCity, string endCity);
+        System.Threading.Tasks.Task<string> GetDataAsync(string startCity, string endCity, System.DateTime departure, System.DateTime arrival);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService/GetDataUsingDataContractResponse")]
         Connections_Client.ServiceReference.CompositeType GetDataUsingDataContract(Connections_Client.ServiceReference.CompositeType composite);
@@ -118,12 +118,12 @@ namespace Connections_Client.ServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public string GetData(string startCity, string endCity) {
-            return base.Channel.GetData(startCity, endCity);
+        public string GetData(string startCity, string endCity, System.DateTime departure, System.DateTime arrival) {
+            return base.Channel.GetData(startCity, endCity, departure, arrival);
         }
         
-        public System.Threading.Tasks.Task<string> GetDataAsync(string startCity, string endCity) {
-            return base.Channel.GetDataAsync(startCity, endCity);
+        public System.Threading.Tasks.Task<string> GetDataAsync(string startCity, string endCity, System.DateTime departure, System.DateTime arrival) {
+            return base.Channel.GetDataAsync(startCity, endCity, departure, arrival);
         }
         
         public Connections_Client.ServiceReference.CompositeType GetDataUsingDataContract(Connections_Client.ServiceReference.CompositeType composite) {

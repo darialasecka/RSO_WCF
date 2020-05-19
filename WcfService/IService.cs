@@ -14,7 +14,7 @@ namespace WcfService
     {
 
         [OperationContract]
-        string GetData(string startCity, string endCity);
+        string GetData(string startCity, string endCity, DateTime departure, DateTime arrival);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);

@@ -6,6 +6,8 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="startCity" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="endCity" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="departure" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="arrival" type="xs:dateTime" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

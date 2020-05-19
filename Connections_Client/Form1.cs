@@ -25,13 +25,13 @@ namespace Connections_Client
             string startCity = startCityInput.Text;
             string endCity = endCityInput.Text;
 
+            DateTime departure = DepartureDatePicker.Value.Date + DepartureTimePicker.Value.TimeOfDay;
+            DateTime arrival = ArrivalDatePicker.Value.Date + ArrivalTimePicker.Value.TimeOfDay;
 
-            Output.Text = service.GetData(startCity, endCity);
+            
+            string output = service.GetData(startCity, endCity, departure, arrival);
 
-        }
-
-        private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
-        {
+            Output.Text = output;
 
         }
     }

@@ -33,9 +33,9 @@
             this.ok_button = new System.Windows.Forms.Button();
             this.endCityInput = new System.Windows.Forms.TextBox();
             this.DepartureDatePicker = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.ArrivalDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.DepartureTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.ArrivalTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,7 +46,7 @@
             // 
             this.startCityInput.Location = new System.Drawing.Point(97, 50);
             this.startCityInput.Name = "startCityInput";
-            this.startCityInput.Size = new System.Drawing.Size(100, 22);
+            this.startCityInput.Size = new System.Drawing.Size(175, 22);
             this.startCityInput.TabIndex = 0;
             // 
             // Output
@@ -72,7 +72,7 @@
             // 
             this.endCityInput.Location = new System.Drawing.Point(97, 94);
             this.endCityInput.Name = "endCityInput";
-            this.endCityInput.Size = new System.Drawing.Size(100, 22);
+            this.endCityInput.Size = new System.Drawing.Size(175, 22);
             this.endCityInput.TabIndex = 3;
             // 
             // DepartureDatePicker
@@ -83,32 +83,32 @@
             this.DepartureDatePicker.Size = new System.Drawing.Size(126, 22);
             this.DepartureDatePicker.TabIndex = 4;
             // 
-            // dateTimePicker2
+            // ArrivalDatePicker
             // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(513, 94);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(126, 22);
-            this.dateTimePicker2.TabIndex = 5;
+            this.ArrivalDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.ArrivalDatePicker.Location = new System.Drawing.Point(513, 94);
+            this.ArrivalDatePicker.Name = "ArrivalDatePicker";
+            this.ArrivalDatePicker.Size = new System.Drawing.Size(126, 22);
+            this.ArrivalDatePicker.TabIndex = 5;
             // 
-            // dateTimePicker3
+            // DepartureTimePicker
             // 
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dateTimePicker3.Location = new System.Drawing.Point(645, 50);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.ShowUpDown = true;
-            this.dateTimePicker3.Size = new System.Drawing.Size(128, 22);
-            this.dateTimePicker3.TabIndex = 6;
+            this.DepartureTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.DepartureTimePicker.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.DepartureTimePicker.Location = new System.Drawing.Point(645, 50);
+            this.DepartureTimePicker.Name = "DepartureTimePicker";
+            this.DepartureTimePicker.ShowUpDown = true;
+            this.DepartureTimePicker.Size = new System.Drawing.Size(109, 22);
+            this.DepartureTimePicker.TabIndex = 6;
             // 
-            // dateTimePicker4
+            // ArrivalTimePicker
             // 
-            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker4.Location = new System.Drawing.Point(645, 94);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.ShowUpDown = true;
-            this.dateTimePicker4.Size = new System.Drawing.Size(128, 22);
-            this.dateTimePicker4.TabIndex = 7;
+            this.ArrivalTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.ArrivalTimePicker.Location = new System.Drawing.Point(645, 94);
+            this.ArrivalTimePicker.Name = "ArrivalTimePicker";
+            this.ArrivalTimePicker.ShowUpDown = true;
+            this.ArrivalTimePicker.Size = new System.Drawing.Size(109, 22);
+            this.ArrivalTimePicker.TabIndex = 7;
             // 
             // label1
             // 
@@ -155,9 +155,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dateTimePicker4);
-            this.Controls.Add(this.dateTimePicker3);
-            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.ArrivalTimePicker);
+            this.Controls.Add(this.DepartureTimePicker);
+            this.Controls.Add(this.ArrivalDatePicker);
             this.Controls.Add(this.DepartureDatePicker);
             this.Controls.Add(this.endCityInput);
             this.Controls.Add(this.ok_button);
@@ -177,9 +177,9 @@
         private System.Windows.Forms.Button ok_button;
         private System.Windows.Forms.TextBox endCityInput;
         private System.Windows.Forms.DateTimePicker DepartureDatePicker;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker4;
+        private System.Windows.Forms.DateTimePicker ArrivalDatePicker;
+        private System.Windows.Forms.DateTimePicker DepartureTimePicker;
+        private System.Windows.Forms.DateTimePicker ArrivalTimePicker;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
