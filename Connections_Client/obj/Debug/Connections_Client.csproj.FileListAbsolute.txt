@@ -1,9 +1,0 @@
-D:\Studia\SEM 6\RSO\WcfService\Connections_Client\bin\Debug\Connections_Client.exe.config
-D:\Studia\SEM 6\RSO\WcfService\Connections_Client\bin\Debug\Connections_Client.exe
-D:\Studia\SEM 6\RSO\WcfService\Connections_Client\bin\Debug\Connections_Client.pdb
-D:\Studia\SEM 6\RSO\WcfService\Connections_Client\obj\Debug\Connections_Client.csprojAssemblyReference.cache
-D:\Studia\SEM 6\RSO\WcfService\Connections_Client\obj\Debug\Connections_Client.Form1.resources
-D:\Studia\SEM 6\RSO\WcfService\Connections_Client\obj\Debug\Connections_Client.Properties.Resources.resources
-D:\Studia\SEM 6\RSO\WcfService\Connections_Client\obj\Debug\Connections_Client.csproj.GenerateResource.cache
-D:\Studia\SEM 6\RSO\WcfService\Connections_Client\obj\Debug\Connections_Client.exe
-D:\Studia\SEM 6\RSO\WcfService\Connections_Client\obj\Debug\Connections_Client.pdb

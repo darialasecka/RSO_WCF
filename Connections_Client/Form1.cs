@@ -29,5 +29,10 @@ namespace Connections_Client
             Output.Text = service.GetData(startCity, endCity);
 
         }
+
+        private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
