@@ -14,6 +14,9 @@ namespace WcfService
     {
 
         [OperationContract]
+        string Initialize();
+
+        [OperationContract]
         string GetData(string startCity, string endCity, DateTime departure, DateTime arrival);
 
         [OperationContract]

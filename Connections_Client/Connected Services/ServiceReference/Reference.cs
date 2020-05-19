@@ -78,6 +78,12 @@ namespace Connections_Client.ServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IService")]
     public interface IService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Initialize", ReplyAction="http://tempuri.org/IService/InitializeResponse")]
+        string Initialize();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Initialize", ReplyAction="http://tempuri.org/IService/InitializeResponse")]
+        System.Threading.Tasks.Task<string> InitializeAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetData", ReplyAction="http://tempuri.org/IService/GetDataResponse")]
         string GetData(string startCity, string endCity, System.DateTime departure, System.DateTime arrival);
         
@@ -116,6 +122,14 @@ namespace Connections_Client.ServiceReference {
         
         public ServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public string Initialize() {
+            return base.Channel.Initialize();
+        }
+        
+        public System.Threading.Tasks.Task<string> InitializeAsync() {
+            return base.Channel.InitializeAsync();
         }
         
         public string GetData(string startCity, string endCity, System.DateTime departure, System.DateTime arrival) {

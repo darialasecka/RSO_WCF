@@ -52,7 +52,7 @@
             // Output
             // 
             this.Output.AutoSize = true;
-            this.Output.Location = new System.Drawing.Point(342, 300);
+            this.Output.Location = new System.Drawing.Point(66, 291);
             this.Output.Name = "Output";
             this.Output.Size = new System.Drawing.Size(51, 17);
             this.Output.TabIndex = 1;
