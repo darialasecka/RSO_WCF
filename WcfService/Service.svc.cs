@@ -14,9 +14,8 @@ namespace WcfService
     public class Service : IService
     {
 
-        List<Connection> connections = new List<Connection>();
-        //HashSet<string> cities = new HashSet<string>();
-        List<string> cities = new List<string>();
+        static List<Connection> connections = new List<Connection>();
+        static HashSet<string> cities = new HashSet<string>();
 
         public string Initialize()
         {
@@ -29,8 +28,6 @@ namespace WcfService
                 {
                     var line = reader.ReadLine();
                     var values = line.Split(';'); //excel zapisał zamiast oddzielonego , to oddzielony ;
-
-                    Console.WriteLine(values);
                     //0- start, 1- start time, 2- end, 3- end time
 
                     DateTime departure = DateTime.Parse(values[1]);
@@ -40,8 +37,8 @@ namespace WcfService
 
                     connections.Add(conn);
 
-                    cities.Add(values[0]);
-                    cities.Add(values[2]);
+                    cities.Add(values[0].ToString().Trim().ToUpper());
+                    cities.Add(values[2].ToString().Trim().ToUpper());
 
                 }
             }
@@ -50,24 +47,13 @@ namespace WcfService
 
         public string GetData(string startCity, string endCity, DateTime departure, DateTime arrival)
         {
-            if (cities.Contains(startCity)) return "Tek";
             return string.Format("start {0}, end {1}\n start datetime {2}, end datetime {3}", startCity, endCity, departure, arrival);
         }
 
-        public bool CityExists(string city) //to w sumie też nie działa
-        {
-            cities = cities.Distinct().ToList();
-            foreach(string town in cities)
-            {
-                if (town.Equals(city)) return true;
-            }
-            return false;
-        }
-
-        /*public bool CityExists(string city) //nie działa
+        public bool CityExists(string city)
         {
             return cities.Contains(city);
-        }*/
+        }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
@@ -68,7 +69,7 @@ namespace Connections_Client
                 incorrect_input = true;
             }
 
-            /*if (!service.CityExists(startCity)) //ok, nie działa
+            if (!service.CityExists(startCity)) //ok, nie działa
             {
                 MessageBox.Show("Starting city [" + startCity + "] doesn't exists", "Incorrect Input");
                 incorrect_input = true;
@@ -78,7 +79,7 @@ namespace Connections_Client
             {
                 MessageBox.Show("Ending city [" + endCity + "] doesn't exists", "Incorrect Input");
                 incorrect_input = true;
-            }*/
+            }
 
             //show after validating everything
             if (!incorrect_input)
@@ -86,6 +87,7 @@ namespace Connections_Client
                 string output = service.GetData(startCity, endCity, departure, arrival);
 
                 Output.Text = output; //zmienimy text na coś innego
+
 
             }
 
