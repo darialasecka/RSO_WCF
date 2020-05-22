@@ -47,7 +47,16 @@ namespace WcfService
 
         public string GetData(string startCity, string endCity, DateTime departure, DateTime arrival)
         {
-            return string.Format("start {0}, end {1}\n start datetime {2}, end datetime {3}", startCity, endCity, departure, arrival);
+            int connections_counter = 0;
+            foreach(Connection conn in connections)
+            {
+                if (conn.StartCity.Equals(startCity) && conn.EndCity.Equals(endCity) && (conn.Departure >= departure) && (conn.Arrival <= arrival)) {
+
+                    connections_counter ++;
+                }
+            }
+            if (connections_counter == 0) return "Connection doesn't exist";
+            else return string.Format("connections counter: {0}", connections_counter); //return string.Format("start {0}, end {1}\n start datetime {2}, end datetime {3}", startCity, endCity, departure, arrival);
         }
 
         public bool CityExists(string city)

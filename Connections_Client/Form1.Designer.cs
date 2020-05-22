@@ -40,6 +40,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.ConnectionsListView = new System.Windows.Forms.ListView();
+            this.chStart = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chDeparture = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chEnd = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chArrival = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // startCityInput
@@ -52,7 +57,7 @@
             // Output
             // 
             this.Output.AutoSize = true;
-            this.Output.Location = new System.Drawing.Point(66, 291);
+            this.Output.Location = new System.Drawing.Point(675, 374);
             this.Output.Name = "Output";
             this.Output.Size = new System.Drawing.Size(51, 17);
             this.Output.TabIndex = 1;
@@ -60,11 +65,11 @@
             // 
             // ok_button
             // 
-            this.ok_button.Location = new System.Drawing.Point(332, 183);
+            this.ok_button.Location = new System.Drawing.Point(277, 141);
             this.ok_button.Name = "ok_button";
-            this.ok_button.Size = new System.Drawing.Size(75, 23);
+            this.ok_button.Size = new System.Drawing.Size(194, 41);
             this.ok_button.TabIndex = 2;
-            this.ok_button.Text = "OK";
+            this.ok_button.Text = "Show Connections";
             this.ok_button.UseVisualStyleBackColor = true;
             this.ok_button.Click += new System.EventHandler(this.ok_button_Click);
             // 
@@ -146,11 +151,48 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Arrival Time:";
             // 
+            // ConnectionsListView
+            // 
+            this.ConnectionsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chStart,
+            this.chDeparture,
+            this.chEnd,
+            this.chArrival});
+            this.ConnectionsListView.HideSelection = false;
+            this.ConnectionsListView.Location = new System.Drawing.Point(12, 228);
+            this.ConnectionsListView.Name = "ConnectionsListView";
+            this.ConnectionsListView.Size = new System.Drawing.Size(404, 189);
+            this.ConnectionsListView.TabIndex = 13;
+            this.ConnectionsListView.TileSize = new System.Drawing.Size(228, 36);
+            this.ConnectionsListView.UseCompatibleStateImageBehavior = false;
+            this.ConnectionsListView.View = System.Windows.Forms.View.Details;
+            // 
+            // chStart
+            // 
+            this.chStart.Text = "Start City";
+            this.chStart.Width = 80;
+            // 
+            // chDeparture
+            // 
+            this.chDeparture.Text = "Departure";
+            this.chDeparture.Width = 120;
+            // 
+            // chEnd
+            // 
+            this.chEnd.Text = "End City";
+            this.chEnd.Width = 80;
+            // 
+            // chArrival
+            // 
+            this.chArrival.Text = "Arrival";
+            this.chArrival.Width = 120;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ConnectionsListView);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -184,6 +226,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ListView ConnectionsListView;
+        private System.Windows.Forms.ColumnHeader chStart;
+        private System.Windows.Forms.ColumnHeader chDeparture;
+        private System.Windows.Forms.ColumnHeader chEnd;
+        private System.Windows.Forms.ColumnHeader chArrival;
     }
 }
 
