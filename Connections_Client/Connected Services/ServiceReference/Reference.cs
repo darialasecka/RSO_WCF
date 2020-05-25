@@ -90,6 +90,12 @@ namespace Connections_Client.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDataDirect", ReplyAction="http://tempuri.org/IService/GetDataDirectResponse")]
         System.Threading.Tasks.Task<string[]> GetDataDirectAsync(string startCity, string endCity, System.DateTime departure, System.DateTime arrival);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDataIndirect", ReplyAction="http://tempuri.org/IService/GetDataIndirectResponse")]
+        string[] GetDataIndirect(string startCity, string endCity, System.DateTime departure, System.DateTime arrival);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDataIndirect", ReplyAction="http://tempuri.org/IService/GetDataIndirectResponse")]
+        System.Threading.Tasks.Task<string[]> GetDataIndirectAsync(string startCity, string endCity, System.DateTime departure, System.DateTime arrival);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService/GetDataUsingDataContractResponse")]
         Connections_Client.ServiceReference.CompositeType GetDataUsingDataContract(Connections_Client.ServiceReference.CompositeType composite);
         
@@ -144,6 +150,14 @@ namespace Connections_Client.ServiceReference {
         
         public System.Threading.Tasks.Task<string[]> GetDataDirectAsync(string startCity, string endCity, System.DateTime departure, System.DateTime arrival) {
             return base.Channel.GetDataDirectAsync(startCity, endCity, departure, arrival);
+        }
+        
+        public string[] GetDataIndirect(string startCity, string endCity, System.DateTime departure, System.DateTime arrival) {
+            return base.Channel.GetDataIndirect(startCity, endCity, departure, arrival);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetDataIndirectAsync(string startCity, string endCity, System.DateTime departure, System.DateTime arrival) {
+            return base.Channel.GetDataIndirectAsync(startCity, endCity, departure, arrival);
         }
         
         public Connections_Client.ServiceReference.CompositeType GetDataUsingDataContract(Connections_Client.ServiceReference.CompositeType composite) {

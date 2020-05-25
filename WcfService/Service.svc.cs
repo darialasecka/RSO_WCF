@@ -20,14 +20,14 @@ namespace WcfService
         public void Initialize()
         {
 
-            using (var reader = new StreamReader("D:\\Studia\\SEM 6\\RSO\\WcfService\\planes.csv"))
+            using (var reader = new StreamReader("D:\\Studia\\SEM 6\\RSO\\WcfService\\trains.csv"))
             {
 
                 if (!reader.EndOfStream) reader.ReadLine(); //pierwszą ignorujemy, bo są nazwy tabel
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
-                    var values = line.Split(';'); //excel zapisał zamiast oddzielonego , to oddzielony ;
+                    var values = line.Split(','); //excel zapisał zamiast oddzielonego , to oddzielony ;
                     //0- start, 1- start time, 2- end, 3- end time
 
                     DateTime departure = DateTime.Parse(values[1]);
@@ -52,15 +52,57 @@ namespace WcfService
             {
                 if (conn.StartCity.Equals(startCity) && conn.EndCity.Equals(endCity) && (conn.Departure >= departure) && (conn.Arrival <= arrival))
                 {
-
                     direct.Add(conn.ToString());
-                    //connections_counter ++;
                 }
             }
-
             return direct;
-            /*if (connections_counter == 0) return "Connection doesn't exist";
-            else return string.Format("connections counter: {0}", connections_counter);*/ //return string.Format("start {0}, end {1}\n start datetime {2}, end datetime {3}", startCity, endCity, departure, arrival);
+        }
+
+        public HashSet<string> GetDataIndirect(string startCity, string endCity, DateTime departure, DateTime arrival)
+        {
+            HashSet<string> indirect = new HashSet<string>();
+            HashSet<string> transfer = new HashSet<string>();
+            foreach (Connection start in GetAllConnectionsFrom(startCity, departure))
+            {
+                transfer.Add(start.ToString());
+                Connection prevCity = start;
+                foreach (Connection nextCity in GetAllConnectionsFrom(prevCity.EndCity, prevCity.Arrival))
+                {
+                    if (nextCity.Arrival <= arrival)
+                    {
+                        transfer.Add(" --> " + nextCity.EndCity + " [" + nextCity.Arrival + "]");
+                        if (nextCity.EndCity.Equals(endCity))
+                        {
+                            string connection = "";
+                            foreach (string city in transfer)
+                                connection += city;
+
+                            indirect.Add(connection);
+
+                            break;
+                        }
+                        prevCity = nextCity;
+                    }
+                }
+                transfer = new HashSet<string>();
+            }
+
+            return indirect;
+
+        }
+
+        public HashSet<Connection> GetAllConnectionsFrom(string startCity, DateTime departure)
+        {
+            HashSet<Connection> connectionsFrom = new HashSet<Connection>();
+
+            foreach(Connection from in connections)
+            {
+                if (from.StartCity.Equals(startCity) && (from.Departure >= departure))
+                {
+                    connectionsFrom.Add(from);
+                }
+            }
+            return connectionsFrom;
         }
 
         public bool CityExists(string city)

@@ -20,6 +20,9 @@ namespace WcfService
         HashSet<string> GetDataDirect(string startCity, string endCity, DateTime departure, DateTime arrival);
 
         [OperationContract]
+        HashSet<string> GetDataIndirect(string startCity, string endCity, DateTime departure, DateTime arrival);
+
+        [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         // TODO: dodaj tutaj operacje usługi

@@ -9,32 +9,27 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WcfService;
 
 namespace Connections_Client
 {
     public partial class Form1 : Form
     {
 
-        ServiceReference.ServiceClient service;
+        ServiceReference.ServiceClient client;
 
         public Form1()
         {
+
+            InitializeComponent();
             try
             {
-                service = new ServiceReference.ServiceClient();
+                Service service = new Service(); // starts service
+                client = new ServiceReference.ServiceClient(); //connects client
+                client.Initialize();
             } catch (CommunicationException) //zanim się połączy
             {
                 MessageBox.Show("Coundn't connect to service", "Connection Error");
-            }
-
-            InitializeComponent();
-
-            try
-            {
-                service.Initialize();
-            } catch (FaultException) //w trakcie wykonywania programu
-            {
-                MessageBox.Show("Couldn't connect to service", "Connection Error");
             }
             
         }
@@ -69,13 +64,13 @@ namespace Connections_Client
                 incorrect_input = true;
             }
 
-            if (!service.CityExists(startCity)) //ok, nie działa
+            if (!client.CityExists(startCity)) //ok, nie działa
             {
                 MessageBox.Show("Starting city [" + startCity + "] doesn't exists", "Incorrect Input");
                 incorrect_input = true;
             }
             
-            if (!service.CityExists(endCity))
+            if (!client.CityExists(endCity))
             {
                 MessageBox.Show("Ending city [" + endCity + "] doesn't exists", "Incorrect Input");
                 incorrect_input = true;
@@ -84,32 +79,60 @@ namespace Connections_Client
             //show after validating everything
             if (!incorrect_input)
             {
-
-                HashSet<string> direct = service.GetDataDirect(startCity, endCity, departure, arrival).ToHashSet();
-
-                DirectListBox.Items.Clear();
+                //direct connections
+                HashSet<string> direct = new HashSet<string>();
+                try
+                {
+                    direct = client.GetDataDirect(startCity, endCity, departure, arrival).ToHashSet();
+                }
+                catch (FaultException) //w trakcie wykonywania programu
+                {
+                    MessageBox.Show("Lost connection to service", "Connection Error");
+                }
+                
+                DirectListView.Items.Clear();
 
                 if (direct.Count() == 0)
                 {
-                    DirectListBox.Items.Add("Direct connection doesn't exist");
+                    var lvi = new ListViewItem("Direct connections doesn't exist");
+                    DirectListView.Items.Add(lvi);
                 }
                 else
                 {
                     foreach (string conn in direct)
                     {
-                        DirectListBox.Items.Add(conn);
+                        var lvi = new ListViewItem(conn);
+                        DirectListView.Items.Add(lvi);
                     }
                 }
 
 
-                
+                //indirect connections
+                HashSet<string> indirect = new HashSet<string>();
+                try
+                {
+                    indirect = client.GetDataIndirect(startCity, endCity, departure, arrival).ToHashSet();
+                }
+                catch (FaultException) //w trakcie wykonywania programu
+                {
+                    MessageBox.Show("Lost connection to service", "Connection Error");
+                }
 
-                
-              
+                IndirectListView.Items.Clear();
+
+                if (indirect.Count() == 0)
+                {
+                    IndirectListView.Items.Add("Indirect connections doesn't exist");
+                }
+                else
+                {
+                    foreach (string conn in indirect)
+                    {
+                        IndirectListView.Items.Add(conn);
+                    }
+                }
 
             }
-
-            
 
         }
     }
