@@ -20,10 +20,9 @@ namespace Connections_Client
 
         public Form1()
         {
-
-            InitializeComponent();
             try
             {
+                InitializeComponent();
                 Service service = new Service(); // starts service
                 client = new ServiceReference.ServiceClient(); //connects client
                 client.Initialize();

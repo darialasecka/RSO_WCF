@@ -27,7 +27,7 @@ namespace WcfService
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
-                    var values = line.Split(';'); //excel zapisał zamiast oddzielonego , to oddzielony ;
+                    var values = line.Split(',');
                     //0- start, 1- start time, 2- end, 3- end time
 
                     DateTime departure = DateTime.Parse(values[1]);
