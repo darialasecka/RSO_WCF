@@ -1,15 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using WcfService;
 
 namespace Connections_Client
 {
@@ -23,8 +16,7 @@ namespace Connections_Client
             try
             {
                 InitializeComponent();
-                Service service = new Service(); // starts service
-                client = new ServiceReference.ServiceClient(); //connects client
+                client = new ServiceReference.ServiceClient(); //connects client - najpierw trzeba włączyć Service.svc
                 client.Initialize();
             } catch (CommunicationException) //zanim się połączy
             {
@@ -63,7 +55,7 @@ namespace Connections_Client
                 incorrect_input = true;
             }
 
-            if (!client.CityExists(startCity)) //ok, nie działa
+            if (!client.CityExists(startCity))
             {
                 MessageBox.Show("Starting city [" + startCity + "] doesn't exists", "Incorrect Input");
                 incorrect_input = true;
