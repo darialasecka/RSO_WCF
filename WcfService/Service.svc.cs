@@ -20,14 +20,14 @@ namespace WcfService
         public void Initialize()
         {
 
-            using (var reader = new StreamReader("D:\\Studia\\SEM 6\\RSO\\WcfService\\trains.csv"))
+            using (var reader = new StreamReader("D:\\Studia\\SEM 6\\RSO\\WcfService\\planes.csv"))
             {
 
                 if (!reader.EndOfStream) reader.ReadLine(); //pierwszą ignorujemy, bo są nazwy tabel
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
-                    var values = line.Split(','); //excel zapisał zamiast oddzielonego , to oddzielony ;
+                    var values = line.Split(';'); //excel zapisał zamiast oddzielonego , to oddzielony ;
                     //0- start, 1- start time, 2- end, 3- end time
 
                     DateTime departure = DateTime.Parse(values[1]);
@@ -46,8 +46,20 @@ namespace WcfService
 
         public HashSet<string> GetDataDirect(string startCity, string endCity, DateTime departure, DateTime arrival)
         {
+            if (!CityExists(startCity))
+            {
+                throw new ArgumentException("Starting city [" + startCity + "] doesn't exists.");
+            }
+            if (!CityExists(endCity))
+            {
+                throw new ArgumentException("Ending city [" + endCity + "] doesn't exists.");
+            }
+            if (departure > arrival)
+            {
+                throw new ArgumentException("Departure time must be before arrival.");
+            }
+
             HashSet<string> direct = new HashSet<string>();
-            //int connections_counter = 0;
             foreach (Connection conn in connections)
             {
                 if (conn.StartCity.Equals(startCity) && conn.EndCity.Equals(endCity) && (conn.Departure >= departure) && (conn.Arrival <= arrival))
@@ -55,11 +67,25 @@ namespace WcfService
                     direct.Add(conn.ToString());
                 }
             }
+            //if(direct.Count() == 0) throw new KeyNotFoundException("Direct connections doesn't exist");
             return direct;
         }
 
         public HashSet<string> GetDataIndirect(string startCity, string endCity, DateTime departure, DateTime arrival)
         {
+            if (!CityExists(startCity))
+            {
+                throw new ArgumentException("Starting city [" + startCity + "] doesn't exists.");
+            }
+            if (!CityExists(endCity))
+            {
+                throw new ArgumentException("Ending city [" + endCity + "] doesn't exists.");
+            }
+            if (departure > arrival)
+            {
+                throw new ArgumentException("Departure time must be before arrival.");
+            }
+
             HashSet<string> indirect = new HashSet<string>();
             HashSet<string> transfer = new HashSet<string>();
             foreach (Connection start in GetAllConnectionsFrom(startCity, departure))
@@ -86,7 +112,7 @@ namespace WcfService
                 }
                 transfer = new HashSet<string>();
             }
-
+            //if (indirect.Count() == 0) throw new KeyNotFoundException("Inirect connections doesn't exist");
             return indirect;
 
         }
@@ -109,20 +135,6 @@ namespace WcfService
         {
             return cities.Contains(city);
         }
-
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
-        {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
-        }
-
         
     }
 }

@@ -79,6 +79,9 @@ namespace Connections_Client
             //show after validating everything
             if (!incorrect_input)
             {
+                DirectListView.Items.Clear();
+                IndirectListView.Items.Clear();
+
                 //direct connections
                 HashSet<string> direct = new HashSet<string>();
                 try
@@ -89,23 +92,20 @@ namespace Connections_Client
                 {
                     MessageBox.Show("Lost connection to service", "Connection Error");
                 }
+                catch (ArgumentException ex)
+                {
+                    MessageBox.Show(ex.Message, "Incorrect Input");
+                }
                 
-                DirectListView.Items.Clear();
-
                 if (direct.Count() == 0)
                 {
-                    var lvi = new ListViewItem("Direct connections doesn't exist");
-                    DirectListView.Items.Add(lvi);
+                    DirectListView.Items.Add("Direct connections doesn't exist");
                 }
                 else
                 {
                     foreach (string conn in direct)
-                    {
-                        var lvi = new ListViewItem(conn);
-                        DirectListView.Items.Add(lvi);
-                    }
+                        DirectListView.Items.Add(conn);
                 }
-
 
                 //indirect connections
                 HashSet<string> indirect = new HashSet<string>();
@@ -117,8 +117,10 @@ namespace Connections_Client
                 {
                     MessageBox.Show("Lost connection to service", "Connection Error");
                 }
-
-                IndirectListView.Items.Clear();
+                catch (ArgumentException ex)
+                {
+                    MessageBox.Show(ex.Message, "Incorrect Input");
+                }
 
                 if (indirect.Count() == 0)
                 {
@@ -127,9 +129,7 @@ namespace Connections_Client
                 else
                 {
                     foreach (string conn in indirect)
-                    {
                         IndirectListView.Items.Add(conn);
-                    }
                 }
 
             }
