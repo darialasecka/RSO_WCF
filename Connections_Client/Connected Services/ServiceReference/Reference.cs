@@ -79,16 +79,16 @@ namespace Connections_Client.ServiceReference {
     public interface IService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Initialize", ReplyAction="http://tempuri.org/IService/InitializeResponse")]
-        string Initialize();
+        void Initialize();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Initialize", ReplyAction="http://tempuri.org/IService/InitializeResponse")]
-        System.Threading.Tasks.Task<string> InitializeAsync();
+        System.Threading.Tasks.Task InitializeAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetData", ReplyAction="http://tempuri.org/IService/GetDataResponse")]
-        string GetData(string startCity, string endCity, System.DateTime departure, System.DateTime arrival);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDataDirect", ReplyAction="http://tempuri.org/IService/GetDataDirectResponse")]
+        string[] GetDataDirect(string startCity, string endCity, System.DateTime departure, System.DateTime arrival);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetData", ReplyAction="http://tempuri.org/IService/GetDataResponse")]
-        System.Threading.Tasks.Task<string> GetDataAsync(string startCity, string endCity, System.DateTime departure, System.DateTime arrival);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDataDirect", ReplyAction="http://tempuri.org/IService/GetDataDirectResponse")]
+        System.Threading.Tasks.Task<string[]> GetDataDirectAsync(string startCity, string endCity, System.DateTime departure, System.DateTime arrival);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService/GetDataUsingDataContractResponse")]
         Connections_Client.ServiceReference.CompositeType GetDataUsingDataContract(Connections_Client.ServiceReference.CompositeType composite);
@@ -130,20 +130,20 @@ namespace Connections_Client.ServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public string Initialize() {
-            return base.Channel.Initialize();
+        public void Initialize() {
+            base.Channel.Initialize();
         }
         
-        public System.Threading.Tasks.Task<string> InitializeAsync() {
+        public System.Threading.Tasks.Task InitializeAsync() {
             return base.Channel.InitializeAsync();
         }
         
-        public string GetData(string startCity, string endCity, System.DateTime departure, System.DateTime arrival) {
-            return base.Channel.GetData(startCity, endCity, departure, arrival);
+        public string[] GetDataDirect(string startCity, string endCity, System.DateTime departure, System.DateTime arrival) {
+            return base.Channel.GetDataDirect(startCity, endCity, departure, arrival);
         }
         
-        public System.Threading.Tasks.Task<string> GetDataAsync(string startCity, string endCity, System.DateTime departure, System.DateTime arrival) {
-            return base.Channel.GetDataAsync(startCity, endCity, departure, arrival);
+        public System.Threading.Tasks.Task<string[]> GetDataDirectAsync(string startCity, string endCity, System.DateTime departure, System.DateTime arrival) {
+            return base.Channel.GetDataDirectAsync(startCity, endCity, departure, arrival);
         }
         
         public Connections_Client.ServiceReference.CompositeType GetDataUsingDataContract(Connections_Client.ServiceReference.CompositeType composite) {

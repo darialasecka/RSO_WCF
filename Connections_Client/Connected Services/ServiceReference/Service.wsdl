@@ -4,7 +4,8 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:52600/Service.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:52600/Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:52600/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfService" />
+      <xsd:import schemaLocation="http://localhost:52600/Service.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:52600/Service.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WcfService" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService_Initialize_InputMessage">
@@ -13,11 +14,11 @@
   <wsdl:message name="IService_Initialize_OutputMessage">
     <wsdl:part name="parameters" element="tns:InitializeResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_GetData_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetData" />
+  <wsdl:message name="IService_GetDataDirect_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataDirect" />
   </wsdl:message>
-  <wsdl:message name="IService_GetData_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  <wsdl:message name="IService_GetDataDirect_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataDirectResponse" />
   </wsdl:message>
   <wsdl:message name="IService_GetDataUsingDataContract_InputMessage">
     <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
@@ -36,9 +37,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/Initialize" message="tns:IService_Initialize_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/InitializeResponse" message="tns:IService_Initialize_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetData">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetData" message="tns:IService_GetData_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetDataResponse" message="tns:IService_GetData_OutputMessage" />
+    <wsdl:operation name="GetDataDirect">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetDataDirect" message="tns:IService_GetDataDirect_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetDataDirectResponse" message="tns:IService_GetDataDirect_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetDataUsingDataContract">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetDataUsingDataContract" message="tns:IService_GetDataUsingDataContract_InputMessage" />
@@ -60,8 +61,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetData">
-      <soap:operation soapAction="http://tempuri.org/IService/GetData" style="document" />
+    <wsdl:operation name="GetDataDirect">
+      <soap:operation soapAction="http://tempuri.org/IService/GetDataDirect" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

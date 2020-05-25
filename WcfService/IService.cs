@@ -14,10 +14,10 @@ namespace WcfService
     {
 
         [OperationContract]
-        string Initialize();
+        void Initialize();
 
         [OperationContract]
-        string GetData(string startCity, string endCity, DateTime departure, DateTime arrival);
+        HashSet<string> GetDataDirect(string startCity, string endCity, DateTime departure, DateTime arrival);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
@@ -26,6 +26,7 @@ namespace WcfService
 
         [OperationContract]
         bool CityExists(string city);
+
 
     }
 

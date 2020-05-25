@@ -31,7 +31,7 @@ namespace Connections_Client
 
             try
             {
-                Output.Text = service.Initialize(); //przypisanie jest tu do testów, bo w konsoli się nie chce wypisać
+                service.Initialize();
             } catch (FaultException) //w trakcie wykonywania programu
             {
                 MessageBox.Show("Couldn't connect to service", "Connection Error");
@@ -84,10 +84,28 @@ namespace Connections_Client
             //show after validating everything
             if (!incorrect_input)
             {
-                string output = service.GetData(startCity, endCity, departure, arrival);
 
-                Output.Text = output; //zmienimy text na coś innego
+                HashSet<string> direct = service.GetDataDirect(startCity, endCity, departure, arrival).ToHashSet();
 
+                DirectListBox.Items.Clear();
+
+                if (direct.Count() == 0)
+                {
+                    DirectListBox.Items.Add("Direct connection doesn't exist");
+                }
+                else
+                {
+                    foreach (string conn in direct)
+                    {
+                        DirectListBox.Items.Add(conn);
+                    }
+                }
+
+
+                
+
+                
+              
 
             }
 

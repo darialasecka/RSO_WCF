@@ -17,7 +17,7 @@ namespace WcfService
         static List<Connection> connections = new List<Connection>();
         static HashSet<string> cities = new HashSet<string>();
 
-        public string Initialize()
+        public void Initialize()
         {
 
             using (var reader = new StreamReader("D:\\Studia\\SEM 6\\RSO\\WcfService\\planes.csv"))
@@ -42,21 +42,25 @@ namespace WcfService
 
                 }
             }
-            return connections[0].ToString(); //test
         }
 
-        public string GetData(string startCity, string endCity, DateTime departure, DateTime arrival)
+        public HashSet<string> GetDataDirect(string startCity, string endCity, DateTime departure, DateTime arrival)
         {
-            int connections_counter = 0;
-            foreach(Connection conn in connections)
+            HashSet<string> direct = new HashSet<string>();
+            //int connections_counter = 0;
+            foreach (Connection conn in connections)
             {
-                if (conn.StartCity.Equals(startCity) && conn.EndCity.Equals(endCity) && (conn.Departure >= departure) && (conn.Arrival <= arrival)) {
+                if (conn.StartCity.Equals(startCity) && conn.EndCity.Equals(endCity) && (conn.Departure >= departure) && (conn.Arrival <= arrival))
+                {
 
-                    connections_counter ++;
+                    direct.Add(conn.ToString());
+                    //connections_counter ++;
                 }
             }
-            if (connections_counter == 0) return "Connection doesn't exist";
-            else return string.Format("connections counter: {0}", connections_counter); //return string.Format("start {0}, end {1}\n start datetime {2}, end datetime {3}", startCity, endCity, departure, arrival);
+
+            return direct;
+            /*if (connections_counter == 0) return "Connection doesn't exist";
+            else return string.Format("connections counter: {0}", connections_counter);*/ //return string.Format("start {0}, end {1}\n start datetime {2}, end datetime {3}", startCity, endCity, departure, arrival);
         }
 
         public bool CityExists(string city)

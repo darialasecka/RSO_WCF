@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.startCityInput = new System.Windows.Forms.TextBox();
-            this.Output = new System.Windows.Forms.Label();
+            this.DirectLabel = new System.Windows.Forms.Label();
             this.ok_button = new System.Windows.Forms.Button();
             this.endCityInput = new System.Windows.Forms.TextBox();
             this.DepartureDatePicker = new System.Windows.Forms.DateTimePicker();
@@ -40,11 +40,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.ConnectionsListView = new System.Windows.Forms.ListView();
-            this.chStart = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chDeparture = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chEnd = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chArrival = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DirectListBox = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // startCityInput
@@ -54,14 +52,14 @@
             this.startCityInput.Size = new System.Drawing.Size(175, 22);
             this.startCityInput.TabIndex = 0;
             // 
-            // Output
+            // DirectLabel
             // 
-            this.Output.AutoSize = true;
-            this.Output.Location = new System.Drawing.Point(675, 374);
-            this.Output.Name = "Output";
-            this.Output.Size = new System.Drawing.Size(51, 17);
-            this.Output.TabIndex = 1;
-            this.Output.Text = "Output";
+            this.DirectLabel.AutoSize = true;
+            this.DirectLabel.Location = new System.Drawing.Point(155, 199);
+            this.DirectLabel.Name = "DirectLabel";
+            this.DirectLabel.Size = new System.Drawing.Size(45, 17);
+            this.DirectLabel.TabIndex = 1;
+            this.DirectLabel.Text = "Direct";
             // 
             // ok_button
             // 
@@ -151,48 +149,41 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Arrival Time:";
             // 
-            // ConnectionsListView
+            // DirectListBox
             // 
-            this.ConnectionsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.chStart,
-            this.chDeparture,
-            this.chEnd,
-            this.chArrival});
-            this.ConnectionsListView.HideSelection = false;
-            this.ConnectionsListView.Location = new System.Drawing.Point(12, 228);
-            this.ConnectionsListView.Name = "ConnectionsListView";
-            this.ConnectionsListView.Size = new System.Drawing.Size(404, 189);
-            this.ConnectionsListView.TabIndex = 13;
-            this.ConnectionsListView.TileSize = new System.Drawing.Size(228, 36);
-            this.ConnectionsListView.UseCompatibleStateImageBehavior = false;
-            this.ConnectionsListView.View = System.Windows.Forms.View.Details;
+            this.DirectListBox.FormattingEnabled = true;
+            this.DirectListBox.ItemHeight = 16;
+            this.DirectListBox.Location = new System.Drawing.Point(23, 229);
+            this.DirectListBox.Name = "DirectListBox";
+            this.DirectListBox.Size = new System.Drawing.Size(349, 196);
+            this.DirectListBox.TabIndex = 14;
             // 
-            // chStart
+            // label5
             // 
-            this.chStart.Text = "Start City";
-            this.chStart.Width = 80;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(587, 13);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 17);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Time";
             // 
-            // chDeparture
+            // label6
             // 
-            this.chDeparture.Text = "Departure";
-            this.chDeparture.Width = 120;
-            // 
-            // chEnd
-            // 
-            this.chEnd.Text = "End City";
-            this.chEnd.Width = 80;
-            // 
-            // chArrival
-            // 
-            this.chArrival.Text = "Arrival";
-            this.chArrival.Width = 120;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(158, 13);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(31, 17);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "City";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.ConnectionsListView);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.DirectListBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -203,10 +194,10 @@
             this.Controls.Add(this.DepartureDatePicker);
             this.Controls.Add(this.endCityInput);
             this.Controls.Add(this.ok_button);
-            this.Controls.Add(this.Output);
+            this.Controls.Add(this.DirectLabel);
             this.Controls.Add(this.startCityInput);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Plane Connections";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,7 +206,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox startCityInput;
-        private System.Windows.Forms.Label Output;
+        private System.Windows.Forms.Label DirectLabel;
         private System.Windows.Forms.Button ok_button;
         private System.Windows.Forms.TextBox endCityInput;
         private System.Windows.Forms.DateTimePicker DepartureDatePicker;
@@ -226,11 +217,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ListView ConnectionsListView;
-        private System.Windows.Forms.ColumnHeader chStart;
-        private System.Windows.Forms.ColumnHeader chDeparture;
-        private System.Windows.Forms.ColumnHeader chEnd;
-        private System.Windows.Forms.ColumnHeader chArrival;
+        private System.Windows.Forms.ListBox DirectListBox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
 
